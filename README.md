@@ -1,6 +1,6 @@
-# Generic RAG Web Application
+# OPCP Internal RAG Application
 
-A sovereign, self-hosted Retrieval-Augmented Generation (RAG) web application for querying markdown documentation through an AI-powered chatbot interface called "L'Oracle".
+A sovereign, self-hosted Retrieval-Augmented Generation (RAG) web application for querying markdown documentation through an AI-powered chatbot interface called "L'Oracle". This application is designed to be compliant with OPCP Explorer standards.
 
 ## Overview
 

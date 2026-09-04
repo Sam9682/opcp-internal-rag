@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: pgvector/pgvector:pg16
-    container_name: rag-postgres
+    container_name: opcp-internal-rag-postgres-${USER_ID}-${POSTGRES_PORT}
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-rag_db}
       POSTGRES_USER: ${POSTGRES_USER:-rag_user}
@@ -28,7 +28,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: rag-redis
+    container_name: opcp-internal-rag-redis-${USER_ID}-${REDIS_PORT}
     command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
     ports:
       - "${REDIS_PORT:-6379}:6379"
@@ -46,7 +46,7 @@ services:
     build:
       context: .
       dockerfile: services/embedding/Dockerfile
-    container_name: rag-embedding
+    container_name: opcp-internal-rag-embedding-${USER_ID}-${EMBEDDING_PORT}
     environment:
       MODEL_NAME: ${EMBEDDING_MODEL:-BAAI/bge-m3}
       DEVICE: ${DEVICE:-cpu}
@@ -67,7 +67,7 @@ services:
     build:
       context: .
       dockerfile: services/llm/Dockerfile
-    container_name: rag-llm
+    container_name: opcp-internal-rag-llm-${USER_ID}-${LLM_PORT}
     environment:
       MODEL_NAME: ${LLM_MODEL:-mistralai/Mistral-7B-Instruct-v0.2}
       DEVICE: ${DEVICE:-cpu}
@@ -85,7 +85,7 @@ services:
     build:
       context: .
       dockerfile: services/ingestion/Dockerfile
-    container_name: rag-ingestion
+    container_name: opcp-internal-rag-ingestion-${USER_ID}-${INGESTION_PORT}
     environment:
       DB_HOST: postgres
       DB_PORT: 5432
@@ -110,7 +110,7 @@ services:
     build:
       context: .
       dockerfile: services/api/Dockerfile
-    container_name: rag-api
+    container_name: opcp-internal-rag-api-${USER_ID}-${API_PORT}
     environment:
       DB_HOST: postgres
       DB_PORT: 5432
@@ -136,6 +136,9 @@ services:
       ENABLE_TLS: ${ENABLE_TLS:-false}
       SSL_KEYFILE: ${SSL_KEYFILE:-/app/certs/api-key.pem}
       SSL_CERTFILE: ${SSL_CERTFILE:-/app/certs/api-cert.pem}
+      # Swautomorph specific variables
+      HTTP_PORT: ${HTTP_PORT:-8080}
+      HTTPS_PORT: ${HTTPS_PORT:-8443}
     volumes:
       - ./services/shared:/app/shared:ro
       # Mount certificates for TLS (Requirement 15.2)
@@ -160,7 +163,7 @@ services:
       dockerfile: Dockerfile
       args:
         - VITE_API_URL=${API_URL:-http://localhost:8080}
-    container_name: rag-web
+    container_name: opcp-internal-rag-web-${USER_ID}-${WEB_PORT}
     ports:
       - "${WEB_PORT:-80}:80"
     depends_on:

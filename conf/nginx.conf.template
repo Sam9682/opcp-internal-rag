@@ -1,0 +1,71 @@
+events {
+    worker_connections 1024;
+}
+
+http {
+    # Main HTTP server for API and web UI
+    server {
+        listen ${HTTP_PORT};
+        server_name localhost;
+
+        # API routes
+        location /api/ {
+            proxy_pass http://localhost:${API_PORT}/api/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Web UI root
+        location / {
+            proxy_pass http://localhost:${WEB_PORT}/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Health check
+        location /health {
+            access_log off;
+            return 200 "healthy\n";
+            add_header Content-Type text/plain;
+        }
+    }
+
+    # HTTPS server (if enabled)
+    server {
+        listen ${HTTPS_PORT};
+        server_name localhost;
+
+        # SSL configuration
+        ssl_certificate /etc/ssl/certs/fullchain.pem;
+        ssl_certificate_key /etc/ssl/private/privkey.pem;
+
+        # API routes
+        location /api/ {
+            proxy_pass http://localhost:${API_PORT}/api/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Web UI root
+        location / {
+            proxy_pass http://localhost:${WEB_PORT}/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Health check
+        location /health {
+            access_log off;
+            return 200 "healthy\n";
+            add_header Content-Type text/plain;
+        }
+    }
+}

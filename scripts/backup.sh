@@ -1,27 +1,39 @@
 #!/bin/bash
 
-# Database backup script
+# Backup script for OPCP Internal RAG application
+# This script creates backups of the database and important configuration files
 
 set -e
 
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 BACKUP_DIR="./backups"
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-BACKUP_FILE="$BACKUP_DIR/rag_db_backup_$TIMESTAMP.sql"
+DATABASE_BACKUP_FILE="$BACKUP_DIR/database_backup_$TIMESTAMP.sql"
+CONFIG_BACKUP_DIR="$BACKUP_DIR/configs_$TIMESTAMP"
 
-# Create backup directory if it doesn't exist
+# Create backup directory
 mkdir -p "$BACKUP_DIR"
+mkdir -p "$CONFIG_BACKUP_DIR"
 
-echo "Starting database backup..."
+echo "Starting backup of OPCP Internal RAG application..."
 
 # Backup database
-docker exec rag-postgres pg_dump -U rag_user rag_db > "$BACKUP_FILE"
+echo "Backing up database..."
+if docker-compose exec postgres pg_dump -U rag_user rag_db > "$DATABASE_BACKUP_FILE"; then
+    echo "✓ Database backup completed: $DATABASE_BACKUP_FILE"
+else
+    echo "✗ Failed to backup database"
+    exit 1
+fi
 
-# Compress backup
-gzip "$BACKUP_FILE"
+# Backup configuration files
+echo "Backing up configuration files..."
+cp .env* "$CONFIG_BACKUP_DIR/" 2>/dev/null || true
+cp -r conf/ "$CONFIG_BACKUP_DIR/" 2>/dev/null || true
+cp -r certs/ "$CONFIG_BACKUP_DIR/" 2>/dev/null || true
 
-echo "Backup completed: ${BACKUP_FILE}.gz"
+echo "✓ Configuration backup completed: $CONFIG_BACKUP_DIR"
 
-# Clean up old backups (keep last 7 days)
-find "$BACKUP_DIR" -name "*.sql.gz" -mtime +7 -delete
-
-echo "Old backups cleaned up"
+echo "Backup completed successfully!"
+echo "Files created:"
+echo "  - $DATABASE_BACKUP_FILE"
+echo "  - $CONFIG_BACKUP_DIR/"

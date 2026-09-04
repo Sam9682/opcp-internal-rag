@@ -387,7 +387,7 @@ async def metrics():
 
 
 @app.post("/api/query", response_model=QueryResponse, dependencies=[Depends(rate_limit_dependency)])
-async def query(request: QueryRequest, credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def query_endpoint(request: QueryRequest, credentials: HTTPAuthorizationCredentials = Depends(security)):
     """
     Process user query through RAG pipeline.
     
@@ -511,7 +511,7 @@ async def query(request: QueryRequest, credentials: HTTPAuthorizationCredentials
 
 
 @app.websocket("/ws/query")
-async def websocket_query(websocket: WebSocket):
+async def websocket_query_endpoint(websocket: WebSocket):
     """
     WebSocket endpoint for streaming query responses.
     
