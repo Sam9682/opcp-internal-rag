@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/cache_client.py
+# hypothesis_version: 6.151.9
+
+[3600, 6379, 86400, 'REDIS_HOST', 'REDIS_PORT', 'cache_client', 'component', 'embedding', 'generic', 'get', 'hits', 'keys', 'keyspace_hits', 'keyspace_misses', 'localhost', 'misses', 'response', 'set', 'stats', 'utf-8', 'warning']

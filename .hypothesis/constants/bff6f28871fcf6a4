@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/rag_query_engine.py
+# hypothesis_version: 6.151.9
+
+[0.0, 0.7, 1.0, 2.0, 100, 200, 500, 512, 1000, '...', 'Building prompt', 'Building prompt...', 'Processing query', 'Prompt built', 'Unknown', 'anonymous', 'answer', 'assistant', 'auto', 'chunk_id', 'cl100k_base', 'component', 'content', 'conversation_id', 'document_id', 'document_title', 'embedding', 'error', 'excerpt', 'id', 'input', 'input_rejected', 'input_safety', 'llm', 'llm_generation', 'metadata', 'output', 'output_rejected', 'output_safety', 'prompt_building', 'query', 'query_length', 'rag_query_engine', 'role', 'search', 'similarity_score', 'sources', 'stage', 'streamed', 'text', 'timestamp', 'title', 'top_k', 'user', 'vector_search', 'warning']

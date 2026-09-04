@@ -1,0 +1,30 @@
+# Docker Compose override for development
+# Copy to docker-compose.override.yml to use
+version: '3.8'
+
+services:
+  # Development overrides for faster iteration
+  api-backend:
+    volumes:
+      - ./services/api:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8080 --reload
+
+  ingestion-service:
+    volumes:
+      - ./services/ingestion:/app
+      - ./docs:/docs:ro
+
+  embedding-service:
+    volumes:
+      - ./services/embedding:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  llm-service:
+    volumes:
+      - ./services/llm:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  web-ui:
+    volumes:
+      - ./services/web:/app
+      - /app/node_modules

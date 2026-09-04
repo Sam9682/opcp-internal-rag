@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/metrics.py
+# hypothesis_version: 6.151.9
+
+[0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 2.5, 5.0, 10.0, 30.0, 60.0, 100, 500, 'System information', 'api_requests_total', 'batch_size_bucket', 'cache_hits_total', 'cache_misses_total', 'cache_type', 'check_type', 'chunks_created_total', 'conversations_active', 'endpoint', 'error', 'error_type', 'large', 'llm_generation_total', 'llm_tokens_generated', 'medium', 'messages_total', 'method', 'operation', 'passed', 'query_errors_total', 'query_total', 'reason', 'rejected', 'result', 'role', 'service', 'single', 'small', 'stage', 'status', 'success', 'system', 'top_k_bucket', 'total', 'vector_search_total', 'version']

@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/config.py
+# hypothesis_version: 6.151.9
+
+[0.7, 100, 512, 1000, 1024, 4096, 5432, '.env', '/docs', 'BAAI/bge-m3', 'changeme', 'cpu', 'postgres', 'rag_db', 'rag_user']

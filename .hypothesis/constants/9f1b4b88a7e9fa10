@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/embedding_service.py
+# hypothesis_version: 6.151.9
+
+[1e-05, 1.0, 1024, 86400, 'BAAI/bge-m3', 'Cached embedding', 'batch_size_bucket', 'component', 'cpu', 'cuda', 'embedding_service', 'error', 'single']

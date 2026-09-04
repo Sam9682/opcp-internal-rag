@@ -1,0 +1,79 @@
+{
+  "name": "docker-compose-deployments",
+  "displayName": "Docker Compose Deployments",
+  "description": "Displays docker-compose services and ports in a DEPLOYMENTS panel",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "workspaceContains:**/docker-compose*.yml",
+    "workspaceContains:**/docker-compose*.yaml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "deployments-container": [
+        {
+          "id": "deploymentsView",
+          "name": "Services"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "deployments-container",
+          "title": "DEPLOYMENTS",
+          "icon": "$(rocket)"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "deployments.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "deployments.openComposeFile",
+        "title": "Open Compose File"
+      },
+      {
+        "command": "deployments.openInBrowser",
+        "title": "Open in Browser",
+        "icon": "$(globe)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "deployments.refresh",
+          "when": "view == deploymentsView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "deployments.openInBrowser",
+          "when": "view == deploymentsView && viewItem == port",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4"
+  }
+}

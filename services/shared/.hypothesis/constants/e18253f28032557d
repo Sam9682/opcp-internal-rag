@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/sentry_config.py
+# hypothesis_version: 6.151.9
+
+[0.1, 'ENVIRONMENT', 'RELEASE', 'SENTRY_DSN', 'development', 'email', 'error', 'id', 'info', 'service', 'tags', 'task', 'unknown', 'username']

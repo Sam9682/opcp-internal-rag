@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/conversation_memory_service.py
+# hypothesis_version: 6.151.9
+
+[200, '...', '1.0', 'Assistant', 'User', 'anonymous', 'assistant', 'content', 'created_at', 'created_by', 'expires_at', 'id', 'message_count', 'metadata', 'role', 'sources', 'timestamp', 'updated_at', 'user', 'user_id', 'version']

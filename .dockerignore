@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Python artifacts
+**/__pycache__
+**/*.pyc
+**/.hypothesis
+
+# Node artifacts
+**/node_modules
+
+# Docs (mounted at runtime)
+docs/
+
+# Misc
+*.log
+.env
+validation_report.md

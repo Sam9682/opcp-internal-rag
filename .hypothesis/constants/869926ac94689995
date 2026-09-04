@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/llm_service.py
+# hypothesis_version: 6.151.9
+
+[0.0, 0.7, 0.9, 1.0, 1.1, 2.0, 512, 1000, 4096, 'Generation failed', 'MODEL_CACHE_DIR', 'cl100k_base', 'component', 'content', 'cpu', 'cuda', 'error', 'input_ids', 'llm_service', 'pt', 'role', 'user']

@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/logging_config.py
+# hypothesis_version: 6.151.9
+
+['%(message)s', '***REDACTED***', 'INFO', 'SERVICE_NAME', 'api_key', 'authorization', 'duration_ms', 'iso', 'operation', 'password', 'secret', 'security', 'service', 'token', 'unknown']

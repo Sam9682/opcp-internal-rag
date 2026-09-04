@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/orm_models.py
+# hypothesis_version: 6.151.9
+
+[1024, 'CASCADE', 'Conversation', 'Document', 'Message', 'Message.timestamp', 'Text cannot be empty', 'TextChunk', '__len__', 'all, delete-orphan', 'anonymous', 'assistant', 'check_job_status', 'check_message_role', 'chunk_index', 'chunks', 'chunks_created', 'chunks_created >= 0', 'completed', 'completed_at', 'content', 'conversation', 'conversation_id', 'conversations', 'conversations.id', 'document', 'document_id', 'documents', 'documents.id', 'ef_construction', 'embedding', 'expires_at', 'failed', 'file_path', 'hnsw', 'idx_documents_status', 'ingestion_jobs', 'ingestion_status', 'm', 'max_retries >= 0', 'messages', 'next_retry_at', 'pending', 'processing', 'queued', 'retry_count >= 0', 'role', 'status', 'text', 'text_chunks', 'timestamp', 'user', 'user_id', 'vector_cosine_ops']

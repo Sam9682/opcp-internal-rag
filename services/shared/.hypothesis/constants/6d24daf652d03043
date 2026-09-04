@@ -1,0 +1,4 @@
+# file: /home/ubuntu/ai-generic-web-rag/services/shared/models.py
+# hypothesis_version: 6.151.9
+
+[0.0, 1.0, 197, 200, 1024, '...', 'Message', 'Source', 'Text cannot be empty', 'assistant', 'completed', 'failed', 'pending', 'processing', 'queued', 'user']
